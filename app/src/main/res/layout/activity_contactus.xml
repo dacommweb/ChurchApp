@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_alignParentTop="true"
+        android:paddingTop="24dp"
+        android:layout_height="?attr/actionBarSize"
+        app:theme="@style/Theme.AppCompat.NoActionBar"
+        android:background="@color/colorPrimary"
+        app:layout_scrollFlags="scroll|enterAlways"/>
+    <android.support.v4.widget.DrawerLayout
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        android:id="@+id/drawer_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="16dp"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:textColor="@color/colorPrimary"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="15sp"
+                    android:text="CONTACT US"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorPrimary"
+                    android:paddingBottom="8dp"
+                    android:textStyle="bold"
+                    android:text="Richard Name here"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorPrimary"
+                    android:text="244 Archbishop FLores Street"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorPrimary"
+                    android:text="Hagatna GU 96910"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorPrimary"
+                    android:layout_marginBottom="40dp"
+                    android:text="United States"/>
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_marginBottom="5dp"
+                    android:background="@drawable/search_border"
+                    android:layout_height="wrap_content">
+
+                    <EditText
+                        android:id="@+id/name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="#0fff"
+                        android:padding="5dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginBottom="3dp"
+                        android:layout_gravity="center"
+                        android:drawablePadding="15dip"
+                        android:hint="Your Name"
+                        android:textColorHint="@color/colorPrimary"
+                        android:inputType="textPersonName"
+                        android:textSize="15dp"/>
+                </android.support.design.widget.TextInputLayout>
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="15dp"
+                    android:textColor="@color/colorPrimary"
+                    android:background="@drawable/search_border"
+                    android:layout_height="wrap_content">
+
+                    <EditText
+                        android:id="@+id/email"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="#0fff"
+                        android:padding="5dp"
+                        android:layout_marginLeft="10dp"
+                        android:textColorHint="@color/colorPrimary"
+                        android:layout_marginBottom="3dp"
+                        android:layout_gravity="center"
+                        android:drawablePadding="15dip"
+                        android:hint="Your Email Address"
+                        android:inputType="textPersonName"
+                        android:textSize="15dp"/>
+                </android.support.design.widget.TextInputLayout>
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="15dp"
+                    android:textColor="@color/colorPrimary"
+                    android:background="@drawable/search_border"
+                    android:layout_height="wrap_content">
+
+                    <EditText
+                        android:id="@+id/message"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="#0fff"
+                        android:padding="5dp"
+                        android:layout_marginLeft="10dp"
+                        android:lines="20"
+                        android:textColorHint="@color/colorPrimary"
+                        android:layout_marginBottom="3dp"
+                        android:layout_gravity="center"
+                        android:drawablePadding="15dip"
+                        android:hint="Your Email Address"
+                        android:inputType="textPersonName"
+                        android:textSize="15dp"/>
+                </android.support.design.widget.TextInputLayout>
+
+            </LinearLayout>
+
+        </ScrollView>
+        <android.support.design.widget.NavigationView
+            android:id="@+id/nav_view"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            app:headerLayout="@layout/nav_header_main"
+            app:menu="@menu/activity_main_drawer" />
+    </android.support.v4.widget.DrawerLayout>
+
+</LinearLayout>

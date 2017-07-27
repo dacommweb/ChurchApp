@@ -1,0 +1,222 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="24dp"
+        android:layout_gravity="center"
+        app:titleTextColor="#fff"
+        android:subtitleTextColor="#fff"
+        app:theme="@style/Theme.AppCompat.NoActionBar"
+        android:background="@color/colorPrimary"
+        app:layout_scrollFlags="scroll|enterAlways">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Church App"
+            android:textColor="#fff"
+            android:textStyle="bold"
+            android:textSize="20dp"
+            android:layout_gravity="center"
+            android:id="@+id/toolbar_title" />
+    </android.support.v7.widget.Toolbar>
+    <android.support.v4.widget.DrawerLayout
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        android:id="@+id/drawer_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+   <RelativeLayout
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content">
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:orientation="vertical"
+           android:id="@+id/dailydevotionalayout"
+           android:layout_above="@+id/img2"
+           android:layout_marginBottom="20dp"
+           android:layout_height="wrap_content">
+           <ImageView
+               android:id="@+id/img"
+               android:layout_width="48dp"
+               android:layout_height="48dp"
+               android:layout_gravity="center"
+               android:src="@drawable/devotional"/>
+           <TextView
+               android:id="@+id/txt1"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_below="@+id/img"
+               android:textSize="11sp"
+               android:text="Daily Devotional"
+               android:textStyle="bold"
+               android:gravity="center"
+               android:src="@drawable/ic_local_cafe_black_18dp"/>
+
+       </LinearLayout>
+       <TextView
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:background="@drawable/logo"
+           android:layout_centerInParent="true"
+           android:textStyle="bold"
+           android:textSize="25dp"
+           android:id="@+id/img2"
+           android:gravity="center"
+           android:text="Logo" />
+
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:orientation="vertical"
+           android:layout_toLeftOf="@+id/img2"
+           android:layout_alignTop="@id/img2"
+           android:paddingBottom="20dp"
+           android:id="@+id/manualaout"
+           android:layout_marginTop="-40dp"
+           android:layout_height="wrap_content">
+           <ImageView
+               android:id="@+id/img7"
+               android:layout_width="80dp"
+               android:layout_height="80dp"
+               android:paddingTop="20dp"
+               android:layout_gravity="center"
+               android:src="@drawable/manual" />
+           <TextView
+               android:id="@+id/txt2"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:textSize="11sp"
+               android:layout_below="@+id/img"
+               android:text="e-manual"
+               android:textStyle="bold"
+               android:gravity="center"/>
+
+           </LinearLayout>
+
+
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:orientation="vertical"
+           android:layout_toRightOf="@+id/img2"
+           android:layout_alignTop="@id/img2"
+           android:paddingBottom="20dp"
+           android:id="@+id/biblelayout"
+           android:layout_marginTop="-40dp"
+           android:layout_height="wrap_content">
+           <ImageView
+               android:id="@+id/img3"
+               android:layout_width="80dp"
+               android:layout_height="80dp"
+               android:paddingTop="20dp"
+               android:layout_gravity="center"
+               android:src="@drawable/bible" />
+           <TextView
+               android:id="@+id/txt3"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:textSize="11sp"
+               android:layout_below="@+id/img"
+               android:text="Bible (KJV)"
+               android:textStyle="bold"
+               android:gravity="center"/>
+           </LinearLayout>
+
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:orientation="vertical"
+           android:layout_toRightOf="@+id/img2"
+           android:layout_alignBottom="@id/img2"
+           android:id="@+id/medialayout"
+           android:layout_marginBottom="-30dp"
+           android:layout_height="wrap_content">
+           <ImageView
+               android:id="@+id/img4"
+               android:layout_width="80dp"
+               android:layout_height="80dp"
+               android:paddingTop="20dp"
+               android:layout_gravity="center"
+               android:src="@drawable/camera" />
+           <TextView
+               android:id="@+id/txt4"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:textSize="11sp"
+               android:layout_below="@+id/img"
+               android:text="Media"
+               android:textStyle="bold"
+               android:gravity="center"/>
+       </LinearLayout>
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:orientation="vertical"
+           android:id="@+id/eventslayout"
+           android:layout_toLeftOf="@+id/img2"
+           android:layout_alignBottom="@id/img2"
+           android:layout_marginBottom="-30dp"
+           android:layout_height="wrap_content">
+           <ImageView
+               android:id="@+id/img6"
+               android:layout_width="80dp"
+               android:layout_height="80dp"
+               android:layout_gravity="center"
+               android:paddingTop="20dp"
+               android:src="@drawable/calendar" />
+           <TextView
+               android:id="@+id/txt5"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_below="@+id/img"
+               android:text="Events"
+               android:textStyle="bold"
+               android:textSize="11sp"
+               android:gravity="center"/>
+           </LinearLayout>
+
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:orientation="vertical"
+           android:layout_below="@id/img2"
+           android:id="@+id/locator"
+           android:gravity="center"
+           android:layout_height="wrap_content">
+           <ImageView
+               android:id="@+id/img5"
+               android:layout_width="70dp"
+               android:layout_height="70dp"
+               android:paddingTop="20dp"
+               android:layout_centerInParent="true"
+               android:src="@drawable/marker" />
+           <TextView
+               android:id="@+id/txt6"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:textSize="11sp"
+               android:layout_below="@+id/img"
+               android:text="Church Locator"
+               android:textStyle="bold"
+               android:gravity="center"/>
+           </LinearLayout>
+       <TextView
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:layout_below="@+id/locator"
+           android:text="Choose what you need now"
+           android:gravity="center"
+           android:layout_alignParentBottom="true"
+           android:textStyle="bold"
+           android:textSize="12dp"/>
+   </RelativeLayout>
+        <android.support.design.widget.NavigationView
+            android:id="@+id/nav_view"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            app:headerLayout="@layout/nav_header_main"
+            app:menu="@menu/activity_main_drawer" />
+
+    </android.support.v4.widget.DrawerLayout>
+</LinearLayout>

@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimaryDark"
+    android:orientation="vertical">
+
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="24dp"
+        android:layout_gravity="center"
+        app:titleTextColor="#fff"
+        android:subtitleTextColor="#fff"
+        app:theme="@style/Theme.AppCompat.NoActionBar"
+        android:background="@color/colorPrimary"
+        app:layout_scrollFlags="scroll|enterAlways">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Church App"
+            android:textColor="#fff"
+            android:textStyle="bold"
+            android:textSize="20dp"
+            android:layout_gravity="center"
+            android:id="@+id/toolbar_title" />
+    </android.support.v7.widget.Toolbar>
+    <android.support.v4.widget.DrawerLayout
+        android:id="@+id/drawer_layout"
+        android:layout_width="match_parent"
+        android:layout_below="@+id/toolbar"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Church Locator"
+                android:id="@+id/eventstitle"
+                android:layout_marginTop="15sp"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:textColor="@color/colorPrimary"/>
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_below="@+id/eventstitle"
+                android:layout_height="wrap_content">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:orientation="vertical"
+                    android:padding="16sp"
+                    android:layout_height="wrap_content">
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:orientation="horizontal"
+                        android:layout_height="wrap_content">
+                        <EditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/search_border"
+                            android:hint="Search..."
+                            android:textColorHint="@color/colorPrimary"
+                            android:paddingLeft="25dp"
+                            android:paddingTop="8dp"
+                            android:paddingBottom="8dp"
+                            android:id="@+id/searchedit"
+                            android:layout_marginBottom="20dp"/>
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_toRightOf="@+id/searchedit"
+                            android:layout_marginLeft="-40dp"
+                            android:layout_marginTop="10dp"
+                            android:src="@drawable/search"/>
+
+                    </RelativeLayout>
+                    <android.support.v7.widget.CardView
+                        android:layout_width="match_parent"
+                        android:background="#fff"
+                        android:padding="5sp"
+                        android:layout_marginBottom="15sp"
+                        android:layout_height="wrap_content">
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:padding="10dp"
+                            android:orientation="horizontal"
+                            android:layout_height="wrap_content">
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:id="@+id/eventitle"
+                                    android:textColor="@color/colorPrimary"
+                                    android:background="@drawable/border"
+                                    android:textStyle="bold"
+                                    android:textSize="15dp"
+                                    android:paddingBottom="5dp"
+                                    android:gravity="center"
+                                    android:layout_gravity="center"
+                                    android:text="Church Name"/>
+                                <View
+                                    android:layout_width="match_parent"
+                                    android:layout_height="2dp"
+                                    android:layout_marginBottom="10dp"
+                                    android:background="@color/colorPrimary"/>
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:orientation="vertical">
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:id="@+id/location"
+                                        android:textColor="@color/colorPrimary"
+                                        android:gravity="center"
+                                        android:text="nakuru kenya, kanu street"
+                                        android:layout_height="wrap_content" />
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:id="@+id/openingtime"
+                                        android:textColor="@color/colorPrimary"
+                                        android:gravity="center"
+                                        android:text="Sun - Sat 07:00 - 1700"
+                                        android:layout_height="wrap_content" />
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:gravity="center"
+                                        android:textColor="@color/colorPrimary"
+                                        android:id="@+id/phone"
+                                        android:text="+254 715 363 474"
+                                        android:layout_height="wrap_content" />
+                                </LinearLayout>
+                            </LinearLayout>
+
+                        </LinearLayout>
+                    </android.support.v7.widget.CardView>
+
+                </LinearLayout>
+            </ScrollView>
+            <include layout="@layout/custom_tab" />
+        </RelativeLayout>
+        <android.support.design.widget.NavigationView
+            android:id="@+id/nav_view"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            app:headerLayout="@layout/nav_header_main"
+            app:menu="@menu/activity_main_drawer" />
+    </android.support.v4.widget.DrawerLayout>
+</RelativeLayout >
