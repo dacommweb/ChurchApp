@@ -176,10 +176,13 @@ public class DailyDevotionalActivity extends AppCompatActivity implements
 
         ImageView imgBack = (ImageView) devotionalDialogue.findViewById(R.id.imgBack);
          etxtDate = (EditText) devotionalDialogue.findViewById(R.id.etxtDate);
+         TextView dialogueTitle = (TextView) devotionalDialogue.findViewById(R.id.dialogueTitle);
         final EditText etxtTopic = (EditText) devotionalDialogue.findViewById(R.id.etxtTopic);
         final EditText etxtVerse = (EditText) devotionalDialogue.findViewById(R.id.etxtVerse);
         final EditText etxtContent = (EditText) devotionalDialogue.findViewById(R.id.etxtContent);
+        dialogueTitle.setText("Add Devotional");
         if(!currentId.contentEquals("")) {
+            dialogueTitle.setText("Update Devotional");
             devDate=currentDevotional.getDate();
             etxtDate.setText(currentDevotional.getHdate());
             etxtTopic.setText(currentDevotional.getTitle());
@@ -213,6 +216,7 @@ public class DailyDevotionalActivity extends AppCompatActivity implements
                     HashMap<String, String> par=new HashMap<>();
                     if(!currentId.contentEquals("")){
                         par.put("action","update_devotional");
+                        par.put("id",currentId);
                     }else{
                         par.put("action","add_devotional");
                     }

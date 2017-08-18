@@ -27,11 +27,12 @@
                 android:layout_marginEnd="10dp"
                 />
             <TextView
+                android:id="@+id/dialogueTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:gravity="center"
-                android:text="Add Devotional"
+                android:text="Add Event"
                 android:textSize="18dp"
                 android:textColor="#fff"
                 />

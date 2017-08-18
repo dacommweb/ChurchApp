@@ -18,6 +18,7 @@ import android.view.Window;
 import android.widget.TextView;
 
 
+import com.suntechnology.churchapp.MainActivity;
 import com.suntechnology.churchapp.R;
 
 import org.json.JSONObject;
@@ -103,13 +104,15 @@ public class Global extends Application{
     }
 
     public static void CheckMenus(Menu menu, Context context, NavigationView navigationView){
-
        //  MenuItem nav_login = menu.findItem(R.id.nav_login);
 
     }
 
     public static void MenusView(int id,Context context,Activity activity) {
-        if (id == R.id.nav_camera) {
+        if (id == R.id.nav_home) {
+            // Handle the camera action
+            Global.goToActivity(context, MainActivity.class,new HashMap<String, String>());
+        } else  if (id == R.id.nav_camera) {
             // Handle the camera action
         } else if (id == R.id.nav_gallery) {
 

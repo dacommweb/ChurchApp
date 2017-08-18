@@ -20,14 +20,14 @@
         <activity android:name=".BibleActivity">
 
         </activity>
-        <activity android:name=".DailyDevotional">
+        <activity android:name=".DailyDevotionalActivity">
+
+        </activity>
+        <activity android:name=".EventsActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-        <activity android:name=".EventsActivity">
-
         </activity>
         <activity android:name=".ContactusActivity">
 
@@ -38,10 +38,36 @@
         <activity android:name=".LocatorActivatity">
 
         </activity>
-        <activity android:name=".MediaActivity"
-           >
+        <activity android:name=".MediaActivity"></activity>
 
-        </activity>
+        <service
+            android:name=".services.MyGcmListenerService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+            </intent-filter>
+        </service>
+        <service
+            android:name=".services.MyNotificationExtenderService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.onesignal.NotificationExtender" />
+            </intent-filter>
+        </service>
+
+        <receiver
+            android:name="com.google.android.gms.gcm.GcmReceiver"
+            android:exported="true"
+            android:permission="com.google.android.c2dm.permission.SEND">
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+
+                <category android:name="com.example.gcm" />
+            </intent-filter>
+        </receiver>
+        <!-- support pre-4.4 KitKat devices, -->
+        <action android:name="com.google.android.c2dm.intent.REGISTRATION" />
+
     </application>
 
 </manifest>

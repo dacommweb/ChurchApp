@@ -33,15 +33,19 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Created by FRED on 7/14/2017.
  */
 
 public class EventsActivity extends AppCompatActivity implements
-        NavigationView.OnNavigationItemSelectedListener,ApiRequest.ApiRequestComm, View.OnClickListener,EventRVAdapter.EventComm {
+        NavigationView.OnNavigationItemSelectedListener,ApiRequest.ApiRequestComm, View.OnClickListener,EventRVAdapter.EventComm,DatePickerFragment.DateCommunicator {
 
     private NavigationView navigationView;
     private Menu menu;
@@ -54,6 +58,10 @@ public class EventsActivity extends AppCompatActivity implements
     private Dialog eventDialogue;
     private String currentId="";
     private Events currentEvent;
+    private String eventTitle;
+    private String eventDate;
+    private String eventDesc;
+    private SimpleDateFormat eventDateFormat  = new SimpleDateFormat("MMMM,dd yyyy");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -162,6 +170,7 @@ public class EventsActivity extends AppCompatActivity implements
                             Events  event = new Events();
                             jSon = jSone.getJSONObject(i);
                             CodingMsg.l("event list"+jSon.toString());
+                            event.setEventId(jSon.getString("id"));
                             event.setEventTitle(jSon.getString("event_title"));
                             event.setEventDesc(jSon.getString("event_desc"));
                             event.setEventDate(jSon.getString("event_date"));
@@ -216,11 +225,14 @@ public class EventsActivity extends AppCompatActivity implements
 
         ImageView imgBack = (ImageView) eventDialogue.findViewById(R.id.imgBack);
         etxtDate = (EditText) eventDialogue.findViewById(R.id.etxtDate);
+         TextView dialogueTitle = (TextView) eventDialogue.findViewById(R.id.dialogueTitle);
         final EditText etxtTitle = (EditText) eventDialogue.findViewById(R.id.etxtTitle);
         final EditText etxtDesc = (EditText) eventDialogue.findViewById(R.id.etxtDesc);
+        dialogueTitle.setText("Add Event");
         if(!currentId.contentEquals("")) {
-            devDate=currentEvent.getDate();
-            etxtDate.setText(currentEvent.getEventDate());
+            dialogueTitle.setText("Update Event");
+            eventDate=currentEvent.getEventDate();
+            etxtDate.setText(eventDateFormat.format(Double.parseDouble(eventDate+"000")));
             etxtTitle.setText(currentEvent.getEventTitle());
             etxtDesc.setText(currentEvent.getEventDesc());
         }
@@ -235,32 +247,29 @@ public class EventsActivity extends AppCompatActivity implements
         btnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                devTopic=etxtTopic.getText().toString();
-                devVerse=etxtVerse.getText().toString();
-                devContent=etxtContent.getText().toString();
-                if(devDate.length()<1){
+                eventTitle=etxtTitle.getText().toString();
+                eventDesc=etxtDesc.getText().toString();
+                if(eventDate.length()<1){
                     etxtDate.setError("Choose date");
-                    CodingMsg.t(DailyDevotionalActivity.this,"Choose Date");
-                } else if(devTopic.length()<1){
-                    etxtTopic.setError("Enter Topic");
-                    CodingMsg.t(DailyDevotionalActivity.this,"Enter Topic");
-                } else if(devVerse.length()<1){
-                    CodingMsg.t(DailyDevotionalActivity.this,"Enter Verse");
-                } else if(devContent.length()<1){
-                    CodingMsg.t(DailyDevotionalActivity.this,"Enter ontent ");
+                    CodingMsg.t(EventsActivity.this,"Choose Date");
+                } else if(eventTitle.length()<1){
+                    etxtTitle.setError("Enter Title");
+                    CodingMsg.t(EventsActivity.this,"Enter Topic");
+                } else if(eventDesc.length()<1){
+                    CodingMsg.t(EventsActivity.this,"Enter Content ");
                 }else{
                     HashMap<String, String> par=new HashMap<>();
                     if(!currentId.contentEquals("")){
-                        par.put("action","update_devotional");
+                        par.put("action","update_event");
+                        par.put("id",currentId);
                     }else{
-                        par.put("action","add_devotional");
+                        par.put("action","add_event");
                     }
 
-                    par.put("title",devTopic);
-                    par.put("verse",devVerse);
-                    par.put("content",devContent);
-                    par.put("date",devDate);
-                    new ApiRequest(DailyDevotionalActivity.this,par,true);
+                    par.put("title",eventTitle);
+                    par.put("content",eventDesc);
+                    par.put("date",eventDate);
+                    new ApiRequest(EventsActivity.this,par,true);
                 }
 
             }
@@ -273,6 +282,12 @@ public class EventsActivity extends AppCompatActivity implements
         });
         eventDialogue.setCancelable(false);
         eventDialogue.show();
+    }
+
+    @Override
+    public void updateDateTxt(Calendar cal) {
+        eventDate= String.valueOf(TimeUnit.MILLISECONDS.toSeconds(cal.getTimeInMillis()));
+        etxtDate.setText(eventDateFormat.format(new Date(cal.getTimeInMillis())));
     }
 }
 
