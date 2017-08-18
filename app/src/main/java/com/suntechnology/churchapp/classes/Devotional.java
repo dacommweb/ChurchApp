@@ -5,6 +5,9 @@ package com.suntechnology.churchapp.classes;
  */
 
 public class Devotional {
+
+
+    String id="";
     String title="";
     String content="";
     String verse="";
@@ -13,6 +16,13 @@ public class Devotional {
     String prevDevotional="";
     String nextDevotional="";
 
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
     public String getPrevDevotional() {
         return prevDevotional;
     }

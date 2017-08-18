@@ -28,10 +28,12 @@ import java.util.Map;
 public class EventRVAdapter extends RecyclerView.Adapter<EventRVAdapter.ViewHolder> {
     ArrayList<Events> eventList;
     Context context;
+    EventComm eventComm;
 
     public EventRVAdapter(Context context, ArrayList<Events> eventList) {
         this.context = context;
         this.eventList = eventList;
+        eventComm= (EventComm) context;
     }
 
     @Override
@@ -52,7 +54,22 @@ public class EventRVAdapter extends RecyclerView.Adapter<EventRVAdapter.ViewHold
         holder.txtEventitle.setText(eventList.get(position).getEventTitle());
         holder.txtEventDate.setText(eventList.get(position).getEventDate());
         holder.txtEvenDesc.setText(eventList.get(position).getEventDesc());
+        holder.txtEditEvent.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                eventComm.eventMessage("edit",eventList.get(position));
+            }
+        });
+   holder.txtDeleteEvent.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                eventComm.eventMessage("delete",eventList.get(position));
+            }
+        });
 
+    }
+    public interface EventComm{
+        void eventMessage(String action,Events event);
     }
 
     @Override
@@ -61,13 +78,15 @@ public class EventRVAdapter extends RecyclerView.Adapter<EventRVAdapter.ViewHold
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        TextView txtEventitle, txtEventDate, txtEvenDesc;
+        TextView txtEventitle, txtEventDate, txtEvenDesc,txtEditEvent,txtDeleteEvent;
 
         public ViewHolder(View itemView) {
             super(itemView);
             txtEventitle = (TextView) itemView.findViewById(R.id.txtEventitle);
             txtEventDate = (TextView) itemView.findViewById(R.id.txtEventDate);
             txtEvenDesc = (TextView) itemView.findViewById(R.id.txtEvenDesc);
+            txtEditEvent = (TextView) itemView.findViewById(R.id.txtEditEvent);
+            txtDeleteEvent = (TextView) itemView.findViewById(R.id.txtDeleteEvent);
         }
     }
 }

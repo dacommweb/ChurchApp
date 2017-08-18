@@ -12,6 +12,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
 
+import com.onesignal.OneSignal;
+import com.suntechnology.churchapp.helper.ApiRequest;
 import com.suntechnology.churchapp.helper.Global;
 
 import java.util.HashMap;
@@ -19,7 +21,8 @@ import java.util.HashMap;
 /**
  * Created by FRED on 7/12/2017.
  */
-public class DefaultActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
+public class DefaultActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener,
+        View.OnClickListener ,ApiRequest.ApiRequestComm{
     private NavigationView navigationView;
     private Menu menu;
     LinearLayout dailydevotionalayout,biblelayout,medialayout,eventslayout,locator,manualaout;
@@ -30,9 +33,22 @@ public class DefaultActivity extends AppCompatActivity implements NavigationView
         setContentView(R.layout.default_layout);
         init();
         initiviews();
-
+        saveplayerId();
     }
+    public void saveplayerId(){
+        OneSignal.idsAvailable(new OneSignal.IdsAvailableHandler() {
+            @Override
+            public void idsAvailable(String userId, String registrationId) {
+                if (registrationId != null){
+                    HashMap<String, String> par=new HashMap<>();
+                    par.put("playerId",userId);
+                    par.put("action","save_playerid");
+                    new ApiRequest(DefaultActivity.this,par,true);
 
+                }
+            }
+        });
+    }
     private void initiviews() {
         locator = (LinearLayout) findViewById(R.id.locator);
         dailydevotionalayout = (LinearLayout) findViewById(R.id.dailydevotionalayout);
@@ -117,7 +133,7 @@ public class DefaultActivity extends AppCompatActivity implements NavigationView
         if(id == R.id.biblelayout){
             Global.goToActivity(this,BibleActivity.class,new HashMap<String, String>());
         }else if(id == R.id.dailydevotionalayout){
-            Global.goToActivity(this,DailyDevotional.class,new HashMap<String, String>());
+            Global.goToActivity(this,DailyDevotionalActivity.class,new HashMap<String, String>());
         }else if(id == R.id.medialayout){
             Global.goToActivity(this,MediaActivity.class,new HashMap<String, String>());
         }else if(id == R.id.eventslayout){
@@ -128,5 +144,10 @@ public class DefaultActivity extends AppCompatActivity implements NavigationView
 //        else if(id == R.id.manualaout){
 //            Global.goToClass(this,LocatorActivatity.class);
 //        }
+    }
+
+    @Override
+    public void apiResponse(String response) {
+
     }
 }

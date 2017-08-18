@@ -8,7 +8,7 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_alignParentTop="true"
-        android:paddingTop="24dp"
+        android:paddingTop="@dimen/toolbar_padding"
         android:layout_height="?attr/actionBarSize"
         app:theme="@style/Theme.AppCompat.NoActionBar"
         android:background="@color/colorPrimary"
@@ -64,12 +64,13 @@
                     android:layout_height="wrap_content">
 
                     <EditText
-                        android:id="@+id/name"
+                        android:id="@+id/etxtName"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="#0fff"
                         android:padding="5dp"
                         android:layout_marginLeft="10dp"
+                        android:layout_marginStart="10dp"
                         android:layout_marginBottom="3dp"
                         android:layout_gravity="center"
                         android:drawablePadding="15dip"
@@ -86,19 +87,21 @@
                     android:layout_height="wrap_content">
 
                     <EditText
-                        android:id="@+id/email"
+                        android:id="@+id/etxtEmail"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="#0fff"
                         android:padding="5dp"
                         android:layout_marginLeft="10dp"
+                        android:layout_marginStart="10dp"
                         android:textColorHint="@color/colorPrimary"
                         android:layout_marginBottom="3dp"
                         android:layout_gravity="center"
                         android:drawablePadding="15dip"
                         android:hint="Your Email Address"
-                        android:inputType="textPersonName"
+                        android:inputType="textEmailAddress"
                         android:textSize="15dp"/>
+
                 </android.support.design.widget.TextInputLayout>
                 <android.support.design.widget.TextInputLayout
                     android:layout_width="match_parent"
@@ -108,21 +111,35 @@
                     android:layout_height="wrap_content">
 
                     <EditText
-                        android:id="@+id/message"
+                        android:id="@+id/etxtMessage"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="#0fff"
                         android:padding="5dp"
                         android:layout_marginLeft="10dp"
-                        android:lines="20"
+                        android:layout_marginStart="10dp"
+                        android:gravity="top"
+                        android:lines="8"
                         android:textColorHint="@color/colorPrimary"
                         android:layout_marginBottom="3dp"
                         android:layout_gravity="center"
                         android:drawablePadding="15dip"
-                        android:hint="Your Email Address"
-                        android:inputType="textPersonName"
+                        android:hint="Type your mesage here"
+                        android:inputType="textMultiLine"
                         android:textSize="15dp"/>
                 </android.support.design.widget.TextInputLayout>
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:paddingLeft="25dp"
+                    android:paddingTop="8dp"
+                    android:paddingBottom="8dp"
+                    android:textColor="#fff"
+                    android:background="@color/colorPrimary"
+                    android:text="Submit"
+                    android:id="@+id/btnSubmit"
+                    android:layout_marginBottom="30dp"/>
 
             </LinearLayout>
 

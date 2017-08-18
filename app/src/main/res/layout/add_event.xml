@@ -53,7 +53,7 @@
                 android:paddingTop="8dp"
                 android:paddingBottom="8dp"
                 android:textColor="#000"
-                android:hint="Choose Devotional Date"
+                android:hint="Choose Event Date"
                 android:textColorHint="@color/colorPrimary"
                 android:id="@+id/etxtDate"
                 android:layout_marginBottom="10dp"/>
@@ -65,23 +65,12 @@
                 android:paddingTop="8dp"
                 android:paddingBottom="8dp"
                 android:textColor="#000"
-                android:hint="Enter Topic"
+                android:hint="Enter Event Title"
                 android:textColorHint="@color/colorPrimary"
-                android:id="@+id/etxtTopic"
+                android:id="@+id/etxtTitle"
                 android:layout_marginBottom="10dp"/>
 
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/etxtcontent_border"
-                android:paddingLeft="15dp"
-                android:paddingTop="8dp"
-                android:textColor="#000"
-                android:paddingBottom="8dp"
-                android:hint="Enter Verse"
-                android:textColorHint="@color/colorPrimary"
-                android:id="@+id/etxtVerse"
-                android:layout_marginBottom="10dp"/>
+
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -92,11 +81,11 @@
                 android:gravity="top|left"
                 android:paddingBottom="8dp"
                 android:inputType="textMultiLine"
-                android:hint="Enter Content"
+                android:hint="Enter Event Description"
                 android:lines="10"
                 android:minLines="10"
                 android:textColorHint="@color/colorPrimary"
-                android:id="@+id/etxtContent"
+                android:id="@+id/etxtDesc"
                 android:layout_marginBottom="20dp"/>
 
             <Button

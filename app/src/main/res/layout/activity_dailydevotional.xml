@@ -12,7 +12,7 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="24dp"
+        android:paddingTop="@dimen/toolbar_padding"
         android:layout_gravity="center"
         app:titleTextColor="#fff"
         android:subtitleTextColor="#fff"
@@ -38,10 +38,58 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:id="@+id/editLay"
+                android:layout_margin="5dp"
+                android:orientation="horizontal"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:padding="5dp"
+                    android:layout_height="wrap_content"
+                    android:text="+ Add"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:background="@drawable/etxtcontent_border"
+                    android:id="@+id/txtAddDev"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    android:gravity="center"
+                    android:textColor="@color/colorPrimary"/>
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:padding="5dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:background="@drawable/etxtcontent_border"
+                    android:layout_height="wrap_content"
+                    android:text="Edit "
+                    android:id="@+id/txtEditDev"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    android:gravity="center"
+                    android:textColor="@color/colorPrimary"/>
+                <TextView
+                    android:layout_weight="1"
+                    android:padding="5dp"
+                    android:background="@drawable/etxtcontent_border"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="Delete"
+                    android:id="@+id/txtDeleteDev"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    android:gravity="center"
+                    android:textColor="@color/colorPrimary"/>
+            </LinearLayout>
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Daily Devotional"
+                android:layout_below="@+id/editLay"
                 android:id="@+id/kjv"
                 android:layout_marginTop="15sp"
                 android:textSize="15sp"

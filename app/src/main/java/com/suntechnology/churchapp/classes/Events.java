@@ -5,10 +5,19 @@ package com.suntechnology.churchapp.classes;
  */
 
 public class Events {
+
+    String eventId="";
     String eventTitle="";
     String eventDesc="";
     String eventDate="";
 
+    public String getEventId() {
+        return eventId;
+    }
+
+    public void setEventId(String eventId) {
+        this.eventId = eventId;
+    }
     public String getEventTitle() {
         return eventTitle;
     }

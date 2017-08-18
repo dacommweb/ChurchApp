@@ -33,9 +33,9 @@ import java.util.Map;
         params=par;
         showLoader=loader;
         apiRequestComm = (ApiRequestComm) cont;
-        if(Global.loaderDialog==null){
+
             Global.loaderDialog=new ProgressDialog(context);
-        }
+
 
         request();
     }
