@@ -1,5 +1,7 @@
 package com.suntechnology.churchapp.classes;
 
+import java.text.SimpleDateFormat;
+
 /**
  * Created by Flexy on 7/27/2017.
  */
@@ -38,8 +40,8 @@ public class Events {
         return eventDate;
     }
     public String getEventDateFormated() {
-
-        return eventDate;
+         SimpleDateFormat eventDateFormat  = new SimpleDateFormat("MMMM,dd yyyy");
+       return eventDateFormat.format(Double.parseDouble(eventDate+"000"));
     }
 
     public void setEventDate(String eventDate) {

@@ -162,6 +162,14 @@ public class EventsActivity extends AppCompatActivity implements
 
                 JSONObject jSon = new JSONObject(response);
                 if (jSon.getString("status").equals("success")) {
+                    if (jSon.getString("action").equals("update_event")
+                    || jSon.getString("action").equals("delete_event")
+                    || jSon.getString("action").equals("add_event")
+                            ) {
+                        currentId="";
+                        Global.alertDialog(this,jSon.getString("title"),jSon.getString("message"));
+                        eventDialogue.dismiss();
+                    }
                     if (jSon.getString("action").equals("get_events")) {
                         CodingMsg.l("get_events");
                         JSONArray jSone = new JSONArray(jSon.getString("events"));

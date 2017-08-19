@@ -52,7 +52,7 @@ public class EventRVAdapter extends RecyclerView.Adapter<EventRVAdapter.ViewHold
     public void onBindViewHolder(final EventRVAdapter.ViewHolder holder, final int position) {
 
         holder.txtEventitle.setText(eventList.get(position).getEventTitle());
-        holder.txtEventDate.setText(eventList.get(position).getEventDate());
+        holder.txtEventDate.setText(eventList.get(position).getEventDateFormated());
         holder.txtEvenDesc.setText(eventList.get(position).getEventDesc());
         holder.txtEditEvent.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -64,6 +64,8 @@ public class EventRVAdapter extends RecyclerView.Adapter<EventRVAdapter.ViewHold
             @Override
             public void onClick(View v) {
                 eventComm.eventMessage("delete",eventList.get(position));
+                eventList.remove(position);
+                notifyItemRemoved(position);
             }
         });
 
