@@ -57,13 +57,13 @@ public class EventRVAdapter extends RecyclerView.Adapter<EventRVAdapter.ViewHold
         holder.txtEditEvent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                eventComm.eventMessage("edit",eventList.get(position));
+                eventComm.eventMessage("edit",eventList.get(position),position);
             }
         });
    holder.txtDeleteEvent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                eventComm.eventMessage("delete",eventList.get(position));
+                eventComm.eventMessage("delete",eventList.get(position),position);
                 eventList.remove(position);
                 notifyItemRemoved(position);
             }
@@ -71,7 +71,7 @@ public class EventRVAdapter extends RecyclerView.Adapter<EventRVAdapter.ViewHold
 
     }
     public interface EventComm{
-        void eventMessage(String action,Events event);
+        void eventMessage(String action,Events event,int position);
     }
 
     @Override

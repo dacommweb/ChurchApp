@@ -57,11 +57,12 @@ public class EventsActivity extends AppCompatActivity implements
     private EditText etxtDate;
     private Dialog eventDialogue;
     private String currentId="";
-    private Events currentEvent;
+    private Events currentEvent,newEvent;
     private String eventTitle;
     private String eventDate;
     private String eventDesc;
     private SimpleDateFormat eventDateFormat  = new SimpleDateFormat("MMMM,dd yyyy");
+    private int ePosition=-1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -162,10 +163,36 @@ public class EventsActivity extends AppCompatActivity implements
 
                 JSONObject jSon = new JSONObject(response);
                 if (jSon.getString("status").equals("success")) {
-                    if (jSon.getString("action").equals("update_event")
-                    || jSon.getString("action").equals("delete_event")
-                    || jSon.getString("action").equals("add_event")
-                            ) {
+                    if (jSon.getString("action").equals("update_event")){
+                        eventList.get(ePosition).setEventTitle(eventTitle);
+                        eventList.get(ePosition).setEventDesc(eventDesc);
+                        eventList.get(ePosition).setEventDate(eventDate);
+                        adapterTRV.notifyDataSetChanged();
+                        initRV();
+
+                        currentId="";
+                        Global.alertDialog(this,jSon.getString("title"),jSon.getString("message"));
+                        eventDialogue.dismiss();
+                    }
+                    if (jSon.getString("action").equals("add_event")){
+                        newEvent.setEventId(jSon.getString("id"));
+                        newEvent.setEventDate(eventDate);
+                        newEvent.setEventDesc(eventDesc);
+                        newEvent.setEventTitle(eventTitle);
+                        eventList.add(0,newEvent);
+
+
+                        adapterTRV.notifyDataSetChanged();
+                        initRV();
+
+                        Global.alertDialog(this,jSon.getString("title"),jSon.getString("message"));
+                        eventDialogue.dismiss();
+                    }
+                    if (jSon.getString("action").equals("delete_event")) {
+                        eventList.remove(ePosition);
+                        adapterTRV.notifyItemRemoved(ePosition);
+                        initRV();
+
                         currentId="";
                         Global.alertDialog(this,jSon.getString("title"),jSon.getString("message"));
                         eventDialogue.dismiss();
@@ -209,7 +236,8 @@ public class EventsActivity extends AppCompatActivity implements
     }
 
     @Override
-    public void eventMessage(String action, Events event) {
+    public void eventMessage(String action, Events event,int position) {
+        ePosition=position;
         if(action.contentEquals("edit")){
             currentId=event.getEventId();
             currentEvent=event;
@@ -272,6 +300,7 @@ public class EventsActivity extends AppCompatActivity implements
                         par.put("id",currentId);
                     }else{
                         par.put("action","add_event");
+
                     }
 
                     par.put("title",eventTitle);
